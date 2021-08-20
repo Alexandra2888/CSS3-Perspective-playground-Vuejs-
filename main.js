@@ -28,14 +28,13 @@ computed: {
     },
     copy(){
         const el = document.createElement( 'textarea' )
-        el.setAttribute('readonly', '') //the user can't update the values, just select them
-        el.style.position = 'absolute'
+        el.setAttribute('readonly', '') 
         el.style.left = '9999px'
         el.value = 'transform: ${ this.box.transform }'
-        document.body.appedChild(el)  //user can copy string with values from the browser
-        el.select() //user can select the content
-        document.getSelection( 'copy' ) //allow us to perform user's acces on the browser
-        document.body.removeChild(el)  //will remove the child element
+        document.body.appedChild(el)  
+        el.select() 
+        document.getSelection( 'copy' ) 
+        document.body.removeChild(el)  
     }
 } 
 }).mount('app');
