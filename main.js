@@ -1,13 +1,13 @@
 Vue.createApp({
-data() {
+  data() {
     return {
-        perspective: 100,
-        rotateX: 0,
-        rotateY: 0,
-        rotateZ:0
+      perspective: 100,
+      rotateX: 0,
+      rotateY: 0,
+      rotateZ: 0
     }
-},
-computed: {
+  },
+  computed: {
     box() {
       return {
         transform: `
@@ -26,15 +26,18 @@ computed: {
       this.rotateY = 0
       this.rotateZ = 0
     },
-    copy(){
-        const el = document.createElement( 'textarea' )
-        el.setAttribute('readonly', '') 
-        el.style.left = '9999px'
-        el.value = 'transform: ${ this.box.transform }'
-        document.body.appedChild(el)  
-        el.select() 
-        document.getSelection( 'copy' ) 
-        document.body.removeChild(el)  
+    copy() {
+      const el = document.createElement('textarea')
+
+      el.setAttribute('readonly', '')
+      el.style.position = 'absolute'
+      el.style.left = '-9999px'
+      el.value = `transform: ${this.box.transform}`
+
+      document.body.appendChild(el)
+      el.select()
+      document.execCommand('copy')
+      document.body.removeChild(el)
     }
-} 
-}).mount('app');
+  }
+}).mount('#app')
